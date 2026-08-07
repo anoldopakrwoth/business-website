@@ -1,0 +1,2 @@
+# Ignore large video files that exceed GitHub's 100MB limit
+images.jpg/*.MOV
