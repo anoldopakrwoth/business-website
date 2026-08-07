@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIGAI Studio | Next-Gen Software, Mobile Apps & Systems Engineering</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            900: '#0c4a6e',
+                            950: '#082f49'
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'shimmer': 'shimmer 2.5s infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        shimmer: {
+                            '100%': { transform: 'translateX(100%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .glass-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-card-light {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at top right, rgba(14, 165, 233, 0.18), transparent 45%),
+                        radial-gradient(circle at bottom left, rgba(99, 102, 241, 0.15), transparent 45%),
+                        radial-gradient(circle at center, rgba(56, 189, 248, 0.05), transparent 60%);
+        }
+        .glow-effect {
+            box-shadow: 0 0 40px -10px rgba(14, 165, 233, 0.3);
+        }
+        .glow-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glow-hover:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 35px -10px rgba(14, 165, 233, 0.25);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #38bdf8 0%, #3b82f6 50%, #818cf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .phone-mockup {
+            border: 8px solid #0f172a;
+            border-radius: 36px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        .phone-mockup::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40%;
+            height: 14px;
+            background-color: #0f172a;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            z-index: 20;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-sky-500 selection:text-white">
+
+    <!-- TOP ADVERTISING BANNER -->
+    <div class="bg-gradient-to-r from-sky-600 via-indigo-600 to-blue-700 text-white shadow-lg relative z-50 border-b border-sky-400/20">
+        <div class="max-w-7xl mx-auto py-2.5 px-6 flex flex-col md:flex-row justify-between items-center gap-3">
+            <div class="flex flex-wrap items-center justify-center md:justify-start gap-3 text-center md:text-left">
+                <span class="bg-amber-400 text-slate-950 font-black text-[10px] uppercase px-3 py-1 rounded-full animate-pulse tracking-widest shadow-sm">
+                    LIMITED PROMO
+                </span>
+                <p class="text-xs sm:text-sm font-semibold tracking-wide">
+                    Build Your Custom <span class="text-amber-300 font-bold underline">Mobile App</span> or <span class="text-amber-300 font-bold underline">Web Platform</span> in Arua & Maracha.
+                </p>
+                <span class="hidden lg:inline text-sky-200 text-xs">|</span>
+                <span class="text-xs font-mono text-sky-200 flex items-center gap-1.5">
+                    <i class="fa-solid fa-envelope text-amber-300"></i> anoldopakrwoth@gmail.com
+                </span>
+            </div>
+            <div class="flex items-center space-x-3">
+                <a href="mailto:anoldopakrwoth@gmail.com" class="bg-white text-sky-700 hover:bg-amber-300 hover:text-slate-900 font-extrabold text-xs px-4 py-1.5 rounded-xl transition-all shadow-md flex items-center gap-2">
+                    <i class="fa-solid fa-paper-plane text-sky-600"></i> Email Us
+                </a>
+                <a href="https://wa.me/256766337253" target="_blank" class="bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-xs px-3.5 py-1.5 rounded-xl transition-all flex items-center gap-1.5 shadow-md">
+                    <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN NAVIGATION BAR -->
+    <nav class="sticky top-0 w-full z-40 bg-slate-950/80 backdrop-blur-xl border-b border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#hero" class="flex items-center space-x-3 group">
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-sky-500 via-blue-600 to-indigo-600 flex items-center justify-center text-xl font-black text-white shadow-lg shadow-sky-500/25 group-hover:scale-105 transition-transform">
+                    B
+                </div>
+                <div>
+                    <span class="text-xl font-black tracking-wider text-white block leading-none">BIGAI STUDIO</span>
+                    <span class="text-[9px] font-bold text-sky-400 tracking-widest uppercase">Arua City & Maracha, Uganda</span>
+                </div>
+            </a>
+            
+            <div class="hidden lg:flex space-x-8 text-xs font-bold tracking-wider uppercase text-slate-300">
+                <a href="#hero" class="hover:text-sky-400 transition-colors">Home</a>
+                <a href="#about-us" class="hover:text-sky-400 transition-colors text-sky-400">About Us</a>
+                <a href="#apps-showcase" class="hover:text-sky-400 transition-colors">Mobile Apps</a>
+                <a href="#digital-services" class="hover:text-sky-400 transition-colors">Web & Software</a>
+                <a href="#contact" class="hover:text-sky-400 transition-colors">Contact</a>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <a href="mailto:anoldopakrwoth@gmail.com" class="hidden sm:inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-200 text-xs font-bold hover:bg-slate-800 hover:border-sky-500/40 transition-all">
+                    <i class="fa-solid fa-envelope text-sky-400"></i> Email Direct
+                </a>
+                <a href="#contact" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 text-white font-bold text-xs tracking-wider uppercase hover:shadow-lg hover:shadow-sky-500/30 transition-all">
+                    Launch Project
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="relative pt-12 pb-24 px-6 max-w-7xl mx-auto hero-gradient overflow-hidden">
+        
+        <!-- TOP CO-FOUNDER PROFILE CARD -->
+        <div class="mb-12 p-4 sm:p-6 rounded-3xl glass-card border border-sky-500/20 shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-6 max-w-4xl mx-auto glow-hover">
+            <div class="flex items-center space-x-4 sm:space-x-6 text-center sm:text-left">
+                <div class="relative flex-shrink-0">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-sky-400 to-blue-600 rounded-full blur opacity-75 animate-pulse"></div>
+                    <div class="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full border-2 border-sky-400 p-1 bg-slate-900 shadow-xl overflow-hidden">
+                        <img src="BPPIE3392.jpg" alt="CO-FOUNDER ; ENG. ANOLD DRATE" class="w-full h-full object-cover rounded-full">
+                    </div>
+                    <span class="absolute bottom-0 right-0 bg-sky-500 text-slate-950 text-xs w-6 h-6 rounded-full flex items-center justify-center border-2 border-slate-900 shadow-sm font-bold" title="Verified Founder">
+                        <i class="fa-solid fa-check"></i>
+                    </span>
+                </div>
+                <div>
+                    <div class="flex flex-wrap items-center gap-2 mb-1.5 justify-center sm:justify-start">
+                        <span class="text-[10px] font-black uppercase tracking-widest text-sky-400 bg-sky-500/10 border border-sky-500/20 px-3 py-0.5 rounded-full inline-block">CO-FOUNDER & LEAD ENGINEER</span>
+                        <span class="text-[10px] font-bold text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2.5 py-0.5 rounded-full inline-block">
+                            <i class="fa-solid fa-location-dot mr-1"></i> Arua City & Maracha
+                        </span>
+                    </div>
+                    <h2 class="text-xl sm:text-2xl font-black text-white tracking-tight">ENG. ANOLD DRATE</h2>
+                    <p class="text-xs text-slate-400 mt-1 max-w-md">Architecting Next-Generation Mobile Apps, High-End Web Applications & Systems Engineering.</p>
+                </div>
+            </div>
+            <div class="flex flex-col sm:flex-row items-center gap-2 w-full sm:w-auto">
+                <a href="mailto:anoldopakrwoth@gmail.com" class="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-extrabold text-xs tracking-wider uppercase transition-all flex items-center justify-center gap-2 shadow-lg shadow-sky-900/40">
+                    <i class="fa-solid fa-envelope"></i> Email Us
+                </a>
+                <a href="https://wa.me/256766337253" target="_blank" class="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs tracking-wider uppercase transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-900/40">
+                    <i class="fa-brands fa-whatsapp"></i> Chat Direct
+                </a>
+            </div>
+        </div>
+
+        <div class="grid lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-7">
+                <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-400 text-xs font-bold mb-6">
+                    <span class="w-2.5 h-2.5 rounded-full bg-sky-400 animate-pulse"></span>
+                    <span class="uppercase tracking-wider text-[11px]">Headquartered in Arua City & Maracha</span>
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight text-white mb-6 tracking-tight">
+                    We Build <span class="gradient-text">Ultra-Fast Websites, Native Mobile Apps</span> & Embedded Tech.
+                </h1>
+                <p class="text-slate-300 text-base sm:text-lg mb-8 leading-relaxed max-w-2xl">
+                    Under the engineering leadership of <strong class="text-white font-bold">ENG. ANOLD DRATE</strong>, BIGAI Studio (Operating in Arua City and Maracha) designs visually stunning, lightning-fast mobile applications, modern web software platforms, graphics branding, and intelligent hardware solutions tailored to your business goals.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 mb-10">
+                    <a href="#contact" class="px-8 py-4 rounded-xl bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 text-white font-extrabold text-center hover:shadow-xl hover:shadow-sky-500/30 transition-all flex items-center justify-center gap-3 text-sm tracking-wider uppercase">
+                        <span>Start Your Mobile / Web Project</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </a>
+                    <a href="mailto:anoldopakrwoth@gmail.com" class="px-8 py-4 rounded-xl border border-slate-700 bg-slate-900/80 text-slate-200 font-bold text-center hover:bg-slate-800 hover:border-sky-500/50 transition-all text-sm tracking-wider uppercase flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-envelope text-sky-400"></i> Send Email
+                    </a>
+                </div>
+
+                <!-- PHONE & EMAIL DIRECT LINES -->
+                <div class="grid sm:grid-cols-3 gap-4 pt-6 border-t border-slate-800">
+                    <a href="tel:+256766337253" class="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 flex items-center space-x-3 hover:border-sky-500/50 transition-all shadow-md">
+                        <div class="w-9 h-9 rounded-xl bg-sky-500/10 border border-sky-500/30 text-sky-400 flex items-center justify-center font-bold flex-shrink-0">
+                            <i class="fa-solid fa-phone-volume"></i>
+                        </div>
+                        <div class="overflow-hidden">
+                            <span class="text-[9px] font-bold text-slate-400 uppercase tracking-wider block">Primary Line</span>
+                            <span class="text-xs font-extrabold text-white truncate block">+256 766 337 253</span>
+                        </div>
+                    </a>
+
+                    <a href="tel:+256745413098" class="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 flex items-center space-x-3 hover:border-sky-500/50 transition-all shadow-md">
+                        <div class="w-9 h-9 rounded-xl bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 flex items-center justify-center font-bold flex-shrink-0">
+                            <i class="fa-solid fa-mobile-screen"></i>
+                        </div>
+                        <div class="overflow-hidden">
+                            <span class="text-[9px] font-bold text-slate-400 uppercase tracking-wider block">Secondary Line</span>
+                            <span class="text-xs font-extrabold text-white truncate block">+256 745 413 098</span>
+                        </div>
+                    </a>
+
+                    <a href="mailto:anoldopakrwoth@gmail.com" class="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 flex items-center space-x-3 hover:border-sky-500/50 transition-all shadow-md sm:col-span-1">
+                        <div class="w-9 h-9 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center font-bold flex-shrink-0">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div class="overflow-hidden">
+                            <span class="text-[9px] font-bold text-slate-400 uppercase tracking-wider block">Official Email</span>
+                            <span class="text-[11px] font-extrabold text-white truncate block" title="anoldopakrwoth@gmail.com">anoldopakrwoth@gmail.com</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- HERO FEATURE: MOBILE APP DEMO & HARDWARE VIDEO -->
+            <div class="lg:col-span-5 relative">
+                <div class="absolute -top-10 -right-10 w-72 h-72 bg-sky-500/20 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -bottom-10 -left-10 w-72 h-72 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="relative z-10 space-y-6">
+                    <!-- ADVANCED MOBILE APP FLOATING PREVIEW BADGE -->
+                    <div class="p-4 rounded-2xl glass-card border border-sky-400/30 shadow-2xl flex items-center gap-4 animate-float">
+                        <div class="w-14 h-24 rounded-xl bg-slate-950 border border-slate-700 p-1 flex-shrink-0 relative overflow-hidden shadow-inner">
+                            <div class="w-full h-full rounded-lg bg-gradient-to-b from-sky-500 to-indigo-600 flex items-center justify-center text-white text-xs">
+                                <i class="fa-solid fa-mobile-screen text-lg animate-pulse"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="text-[9px] font-black uppercase tracking-widest text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full inline-block mb-1">Flutter & Android SDK</span>
+                            <h4 class="text-sm font-bold text-white leading-tight">Custom Mobile App Architecture</h4>
+                            <p class="text-[11px] text-slate-400 mt-1">Sleek iOS & Android user interfaces integrated with cloud APIs.</p>
+                        </div>
+                    </div>
+
+                    <!-- HERO VIDEO CONTAINER -->
+                    <div class="bg-slate-900/90 p-3 rounded-3xl border border-slate-800 shadow-2xl overflow-hidden glow-hover">
+                        <div class="relative rounded-2xl overflow-hidden bg-black aspect-video flex items-center justify-center border border-slate-800">
+                            <video class="w-full h-full object-cover" controls playsinline preload="metadata">
+                                <source src="images.jpg/KPOX0287.MP4" type="video/mp4">
+                                Your browser does not support HTML video.
+                            </video>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center justify-between text-[11px] font-mono text-sky-400 mb-1">
+                                <span class="font-bold">INTEGRATED ENGINEERING</span>
+                                <span class="text-emerald-400 font-bold flex items-center gap-1">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> ACTIVE LAB
+                                </span>
+                            </div>
+                            <h3 class="text-base font-bold text-white">Automated Hardware & App Control Showcase</h3>
+                            <p class="text-xs text-slate-400 mt-1 leading-relaxed">Microcontroller sweep actuation synchronized with custom mobile application triggers.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW ADVANCED ABOUT US SECTION -->
+    <section id="about-us" class="py-24 bg-slate-900/80 border-t border-slate-800/80 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-bold text-sky-400 uppercase tracking-widest bg-sky-500/10 border border-sky-500/20 px-4 py-1.5 rounded-full inline-block mb-3">
+                    <i class="fa-solid fa-building text-sky-400 mr-1.5"></i> ABOUT BIGAI STUDIO
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white mb-4">Architecting Digital Infrastructure & Systems Engineering</h2>
+                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                    Headquartered across Arua City and Maracha, BIGAI Studio is a technology hub dedicated to bridging complex full-stack software development, cross-platform mobile app architecture, and real-time IoT hardware engineering.
+                </p>
+            </div>
+
+            <!-- MISSION & VISION GRID -->
+            <div class="grid md:grid-cols-2 gap-8 mb-16">
+                <div class="p-8 rounded-3xl glass-card border border-sky-500/20 glow-hover">
+                    <div class="w-14 h-14 rounded-2xl bg-sky-500/10 border border-sky-500/30 text-sky-400 flex items-center justify-center text-2xl mb-6 font-bold">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Our Mission</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        To democratize access to modern technological tools by building resilient full-stack applications, intelligent hardware security systems, and hyper-localized digital platforms that drive regional economic empowerment.
+                    </p>
+                </div>
+
+                <div class="p-8 rounded-3xl glass-card border border-indigo-500/20 glow-hover">
+                    <div class="w-14 h-14 rounded-2xl bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 flex items-center justify-center text-2xl mb-6 font-bold">
+                        <i class="fa-solid fa-eye"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Our Vision</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        To set the benchmark for high-performance software engineering, localized mobile application ecosystems, and smart hardware telemetry integrations across emerging digital landscapes.
+                    </p>
+                </div>
+            </div>
+
+            <!-- CORE PILLARS OF EXCELLENCE -->
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <div class="p-6 rounded-2xl bg-slate-950 border border-slate-800">
+                    <div class="text-sky-400 font-mono text-xs font-bold uppercase mb-2">Pillar 01</div>
+                    <h4 class="text-lg font-bold text-white mb-2">Architectural Full-Stack Design</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">Crafting responsive interfaces (React, Flutter) backed by powerful REST APIs (Django, Python) for modular, high-speed scaling.</p>
+                </div>
+                <div class="p-6 rounded-2xl bg-slate-950 border border-slate-800">
+                    <div class="text-indigo-400 font-mono text-xs font-bold uppercase mb-2">Pillar 02</div>
+                    <h4 class="text-lg font-bold text-white mb-2">Hardware-Software Convergence</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">Integrating embedded microstructural systems (ESP32, ESP32-CAM, ultrasonic nodes) with custom user mobile dashboard controls.</p>
+                </div>
+                <div class="p-6 rounded-2xl bg-slate-950 border border-slate-800">
+                    <div class="text-emerald-400 font-mono text-xs font-bold uppercase mb-2">Pillar 03</div>
+                    <h4 class="text-lg font-bold text-white mb-2">Localized Ecosystem Solutions</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">Tailoring software applications specifically for local context, regional payment rail integrations, and real-time community engagement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ADVANCED MOBILE APP SHOWCASE SECTION -->
+    <section id="apps-showcase" class="py-20 bg-slate-900/60 border-y border-slate-800/80 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-bold text-sky-400 uppercase tracking-widest bg-sky-500/10 border border-sky-500/20 px-4 py-1.5 rounded-full inline-block mb-3">
+                    <i class="fa-solid fa-mobile-screen-button text-sky-400 mr-1.5"></i> MOBILE APPLICATION SUITE
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white mb-4">High-Performance Mobile Apps Built to Scale</h2>
+                <p class="text-slate-400 text-sm sm:text-base">We develop responsive, robust mobile applications tailored for commerce, IoT system control, and seamless user engagements across Arua City & Maracha.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8 items-center">
+                <div class="space-y-6 order-2 lg:order-1">
+                    <div class="p-6 rounded-2xl glass-card border border-slate-800 hover:border-sky-500/40 transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-500/30 text-sky-400 flex items-center justify-center text-xl font-bold mb-4">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Modern UI/UX Design</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">Pixel-perfect mobile layout designed for maximum conversion, fluid navigation, and responsive touch gestures.</p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl glass-card border border-slate-800 hover:border-sky-500/40 transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/30 text-blue-400 flex items-center justify-center text-xl font-bold mb-4">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Real-Time Data Integration</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">Integrated REST APIs, instant web push notifications, real-time sync, and payment gateway infrastructure.</p>
+                    </div>
+                </div>
+
+                <!-- CENTER PHONE MOCKUP PREVIEW ARCHITECTURE -->
+                <div class="order-1 lg:order-2 flex justify-center">
+                    <div class="relative max-w-[280px] w-full">
+                        <div class="absolute -inset-2 bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 rounded-[42px] blur-xl opacity-50 animate-pulse"></div>
+                        
+                        <div class="phone-mockup bg-slate-900 border-4 border-slate-800 shadow-2xl relative z-10">
+                            <div class="bg-slate-950 pt-7 pb-3 px-4 flex justify-between items-center border-b border-slate-800">
+                                <span class="text-[10px] font-bold text-sky-400">BIGAI MOBILE UI</span>
+                                <span class="text-[9px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-full font-bold">ONLINE</span>
+                            </div>
+                            
+                            <div class="p-4 space-y-4 bg-slate-950 text-left min-h-[440px] flex flex-col justify-between">
+                                <div class="space-y-3">
+                                    <div class="w-full h-32 rounded-xl bg-gradient-to-tr from-sky-600 to-indigo-700 p-3.5 flex flex-col justify-between text-white shadow-md">
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-[10px] uppercase font-bold tracking-wider text-sky-200">Mobile Control Center</span>
+                                            <i class="fa-solid fa-microchip text-xs"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs font-bold">Active System Connection</p>
+                                            <p class="text-[10px] text-sky-200">Connected to ESP32 Node</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between">
+                                        <div class="flex items-center space-x-2">
+                                            <div class="w-7 h-7 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center text-xs">
+                                                <i class="fa-solid fa-wifi"></i>
+                                            </div>
+                                            <span class="text-xs font-semibold text-slate-200">Live Telemetry</span>
+                                        </div>
+                                        <span class="text-[10px] font-mono text-sky-400 font-bold">240 ms</span>
+                                    </div>
+
+                                    <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between">
+                                        <div class="flex items-center space-x-2">
+                                            <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs">
+                                                <i class="fa-solid fa-shield-halved"></i>
+                                            </div>
+                                            <span class="text-xs font-semibold text-slate-200">Security Node</span>
+                                        </div>
+                                        <span class="text-[10px] font-mono text-emerald-400 font-bold">ARMED</span>
+                                    </div>
+                                </div>
+
+                                <a href="#contact" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 text-white font-extrabold text-center text-xs tracking-wider uppercase shadow-md block">
+                                    Request Custom App
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6 order-3">
+                    <div class="p-6 rounded-2xl glass-card border border-slate-800 hover:border-sky-500/40 transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 flex items-center justify-center text-xl font-bold mb-4">
+                            <i class="fa-solid fa-layer-group"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Cross-Platform Architecture</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">Single codebase deployment across both Android and iOS devices, reducing development time and cost.</p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl glass-card border border-slate-800 hover:border-sky-500/40 transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center text-xl font-bold mb-4">
+                            <i class="fa-solid fa-lock"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Encrypted Backend</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">Enterprise-level data encryption, authentication modules, and secure payment rail integration.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROMOTIONAL DIGITAL SERVICES SECTION -->
+    <section id="digital-services" class="py-24 bg-slate-950 border-b border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-bold text-sky-400 uppercase tracking-widest block mb-2">CORE ENGINEERING SERVICES</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white mb-4">Elevate Your Brand With Next-Gen Technology</h2>
+                <p class="text-slate-400 text-sm sm:text-base">Whether you require an enterprise web platform, mobile applications, graphics branding, or IoT hardware design, we deliver solutions engineered to stand out.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Website Development Card -->
+                <div class="p-8 rounded-3xl glass-card border border-slate-800 glow-hover flex flex-col justify-between">
+                    <div>
+                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-sky-500 to-blue-600 text-white flex items-center justify-center text-3xl mb-6 shadow-lg shadow-sky-500/30">
+                            <i class="fa-solid fa-laptop-code"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">Custom Websites</h3>
+                        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-6">High-converting business websites, modern web portals, and e-commerce platforms engineered for speed, responsiveness, and conversion.</p>
+                        <ul class="space-y-2.5 text-xs font-semibold text-slate-300 mb-6">
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-sky-400"></i> Responsive Across All Screen Sizes</li>
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-sky-400"></i> Fast Performance & SEO Optimized</li>
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-sky-400"></i> Payment Gateway & API Integration</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="w-full py-3.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-extrabold text-center text-xs tracking-wider uppercase transition-colors shadow-md">
+                        Order Custom Website
+                    </a>
+                </div>
+
+                <!-- Mobile Apps Development Card -->
+                <div class="p-8 rounded-3xl glass-card border border-sky-500/30 glow-hover flex flex-col justify-between relative overflow-hidden">
+                    <span class="absolute top-4 right-4 bg-sky-500 text-slate-950 font-black text-[9px] uppercase px-2.5 py-1 rounded-full">POPULAR CHOICE</span>
+                    <div>
+                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white flex items-center justify-center text-3xl mb-6 shadow-lg shadow-blue-500/30">
+                            <i class="fa-solid fa-mobile-screen-button"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">Mobile Applications</h3>
+                        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-6">Cross-platform iOS and Android mobile applications built using modern frameworks like Flutter and Android Studio for fast deployment.</p>
+                        <ul class="space-y-2.5 text-xs font-semibold text-slate-300 mb-6">
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-blue-400"></i> Android & iOS Compatibility</li>
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-blue-400"></i> Real-Time Data Push Notifications</li>
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-blue-400"></i> Interactive UI/UX Design</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:opacity-90 text-white font-extrabold text-center text-xs tracking-wider uppercase transition-all shadow-md">
+                        Order Mobile App
+                    </a>
+                </div>
+
+                <!-- Hardware & Embedded Lab Card -->
+                <div class="p-8 rounded-3xl glass-card border border-slate-800 glow-hover flex flex-col justify-between">
+                    <div>
+                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-600 text-white flex items-center justify-center text-3xl mb-6 shadow-lg shadow-emerald-500/30">
+                            <i class="fa-solid fa-microchip"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">Hardware & IoT Lab</h3>
+                        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-6">Intelligent microcontroller setup, automated perimeter security nodes, ESP32 telemetry, and sensor-actuated physical systems.</p>
+                        <ul class="space-y-2.5 text-xs font-semibold text-slate-300 mb-6">
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-emerald-400"></i> ESP32 & Camera Module Integration</li>
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-emerald-400"></i> Servo Sweeps & Sensor Triggering</li>
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-emerald-400"></i> Hardware to Mobile App Sync</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-center text-xs tracking-wider uppercase transition-colors shadow-md">
+                        Request Hardware System
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT & FOOTER SECTION -->
+    <footer id="contact" class="bg-slate-950 pt-20 pb-12 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 mb-16 items-center">
+                <div>
+                    <span class="text-xs font-bold text-sky-400 uppercase tracking-widest block mb-2">LET'S CONNECT</span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-white mb-4">Ready to Start Your Next Tech Project?</h2>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">Get in touch with Eng. Anold Drate and the BIGAI Studio team in Arua City & Maracha to discuss your website, mobile app, or systems engineering requirements.</p>
+                    
+                    <div class="space-y-3 font-mono text-sm">
+                        <div class="flex items-center gap-3 text-slate-300">
+                            <i class="fa-solid fa-envelope text-sky-400 w-5"></i>
+                            <a href="mailto:anoldopakrwoth@gmail.com" class="hover:text-sky-400 transition-colors">anoldopakrwoth@gmail.com</a>
+                        </div>
+                        <div class="flex items-center gap-3 text-slate-300">
+                            <i class="fa-solid fa-phone text-sky-400 w-5"></i>
+                            <a href="tel:+256766337253" class="hover:text-sky-400 transition-colors">+256 766 337 253</a>
+                        </div>
+                        <div class="flex items-center gap-3 text-slate-300">
+                            <i class="fa-brands fa-whatsapp text-emerald-400 w-5"></i>
+                            <a href="https://wa.me/256766337253" target="_blank" class="hover:text-emerald-400 transition-colors">+256 766 337 253</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-8 rounded-3xl glass-card border border-slate-800">
+                    <form class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1">Your Name</label>
+                            <input type="text" placeholder="Enter your full name" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white text-xs focus:outline-none focus:border-sky-500 transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1">Email Address</label>
+                            <input type="email" placeholder="Enter your email" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white text-xs focus:outline-none focus:border-sky-500 transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1">Project Details</label>
+                            <textarea rows="3" placeholder="Describe your mobile app, website, or hardware needs..." class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-white text-xs focus:outline-none focus:border-sky-500 transition-colors"></textarea>
+                        </div>
+                        <button type="button" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 text-white font-extrabold text-xs tracking-wider uppercase hover:shadow-lg hover:shadow-sky-500/30 transition-all">
+                            Send Inquiry
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-slate-900 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-4">
+                <p>© 2026 BIGAI Studio (Arua City & Maracha). All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#hero" class="hover:text-sky-400 transition-colors">Back to top</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
